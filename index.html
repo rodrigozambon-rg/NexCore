@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="NexCore - computadores, componentes e montagem personalizada de PCs com frete fixo de R$ 30." />
+  <title>NexCore | Tecnologia montada para você</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="site-noise" aria-hidden="true"></div>
+  <header class="header">
+    <a class="logo" href="#inicio" aria-label="Página inicial NexCore">
+      <span class="logo-mark">N</span>
+      <span>NEX<span>CORE</span></span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+
+    <nav class="nav" id="mainNav" aria-label="Navegação principal">
+      <a href="#inicio">Início</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#montagem">Monte seu PC</a>
+      <a href="#entrega">Entrega</a>
+      <a href="#sobre">Sobre</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="account-button" id="openRegister" type="button" aria-label="Criar conta">
+        <span class="account-icon">👤</span>
+        <span class="account-label">Criar conta</span>
+      </button>
+      <button class="cart-button" id="cartButton" aria-label="Abrir carrinho">
+        <span class="cart-label">Carrinho</span>
+        <span class="cart-icon">🛒</span>
+        <span id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-content reveal">
+        <span class="eyebrow">Performance • Confiança • Personalização</span>
+        <h1>
+          Tecnologia montada
+          <span class="typing">para você.</span>
+        </h1>
+        <p>Computadores e componentes selecionados com suporte especializado, montagem profissional e uma experiência de
+          compra simples do início ao fim.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#montagem">Montar meu PC <span aria-hidden="true">→</span></a>
+          <a class="btn secondary" href="#produtos">Explorar produtos</a>
+        </div>
+        <div class="hero-trust">
+          <span>✓ Compra segura</span><span>✓ Suporte especializado</span><span>✓ Montagem testada</span>
+        </div>
+        <div class="hero-benefits">
+          <div><strong>Frete fixo</strong><small>R$ 30,00 por pedido</small></div>
+          <div><strong>Suporte dedicado</strong><small>Antes e após a compra</small></div>
+          <div><strong>Montagem profissional</strong><small>Testes e organização inclusos</small></div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="pc-glow"></div>
+        <div class="pc-3d-shell">
+          <canvas id="pc3dCanvas" aria-label="Computador 3D interativo"></canvas>
+          <div class="pc-3d-status"><span class="status-dot"></span> SHOWROOM 3D</div>
+          <div class="pc-3d-colors" aria-label="Cores da iluminação RGB">
+            <button type="button" data-rgb="25e7ff" aria-label="RGB azul"></button>
+            <button type="button" data-rgb="9b5cff" aria-label="RGB roxo"></button>
+            <button type="button" data-rgb="ff3d8d" aria-label="RGB rosa"></button>
+            <button type="button" data-rgb="35e6a5" aria-label="RGB verde"></button>
+          </div>
+          <div class="pc-3d-help">↔ Arraste para girar • Role para aproximar</div>
+        </div>
+        <div class="floating-card card-a">⚡ Alta performance</div>
+        <div class="floating-card card-b">✓ Interativo em 3D</div>
+      </div>
+    </section>
+
+    <section class="section products-section" id="produtos">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Loja NexCore</span>
+        <h2>Componentes em destaque</h2>
+        <p>Peças selecionadas para oferecer desempenho, confiabilidade e ótimo custo-benefício.</p>
+      </div>
+
+      <div class="store-toolbar reveal">
+        <label class="search-box" for="productSearch">
+          <span aria-hidden="true">⌕</span>
+          <input id="productSearch" type="search" placeholder="Buscar produto..." autocomplete="off" />
+        </label>
+        <div class="store-note">Entrega fixa de <strong>R$ 30,00</strong></div>
+      </div>
+
+      <div class="filters reveal" id="productFilters">
+        <button class="filter active" data-category="todos">Todos</button>
+        <button class="filter" data-category="processador">Processadores</button>
+        <button class="filter" data-category="placa-video">Placas de vídeo</button>
+        <button class="filter" data-category="memoria">Memórias</button>
+        <button class="filter" data-category="armazenamento">Armazenamento</button>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section class="builder-section" id="montagem">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Configuração personalizada</span>
+        <h2>Monte seu PC ideal</h2>
+        <p>Escolha as peças e veja uma estimativa instantânea do seu computador.</p>
+      </div>
+
+      <div class="builder-layout reveal">
+        <form class="builder-form" id="builderForm">
+          <label>Uso principal
+            <select id="usage">
+              <option value="gamer">PC Gamer</option>
+              <option value="trabalho">Trabalho e estudos</option>
+              <option value="criacao">Edição e criação</option>
+              <option value="empresa">Empresa</option>
+            </select>
+          </label>
+
+          <label>Processador
+            <select id="cpuSelect"></select>
+          </label>
+
+          <label>Placa de vídeo
+            <select id="gpuSelect"></select>
+          </label>
+
+          <label>Memória RAM
+            <select id="ramSelect"></select>
+          </label>
+
+          <label>Armazenamento
+            <select id="storageSelect"></select>
+          </label>
+
+          <label>Gabinete
+            <select id="caseSelect"></select>
+          </label>
+
+          <label>Observações
+            <textarea id="builderNotes" rows="4"
+              placeholder="Ex.: quero RGB azul, Wi-Fi e foco em jogos competitivos."></textarea>
+          </label>
+        </form>
+
+        <aside class="builder-summary">
+          <span class="summary-tag">Sua configuração</span>
+          <h3 id="buildName">NexCore Custom</h3>
+          <div id="buildItems" class="build-items"></div>
+          <div class="total-row">
+            <span>Valor estimado</span>
+            <strong id="buildTotal">R$ 0,00</strong>
+          </div>
+          <small>Preço demonstrativo. A equipe confirma compatibilidade e disponibilidade.</small>
+          <button class="btn primary full" id="requestBuild" type="button">Solicitar orçamento</button>
+        </aside>
+      </div>
+    </section>
+
+    <section class="delivery-section" id="entrega">
+      <div class="delivery-card reveal">
+        <div>
+          <span class="eyebrow">Entrega inteligente</span>
+          <h2>Consulte seu endereço pelo CEP</h2>
+          <p>Digite seu CEP para preencher automaticamente rua, bairro, cidade e estado.</p>
+        </div>
+
+        <form id="cepForm" class="cep-form">
+          <div class="cep-search">
+            <input id="cepInput" type="text" inputmode="numeric" maxlength="9" placeholder="00000-000" aria-label="CEP"
+              required />
+            <button class="btn primary" type="submit">Consultar</button>
+          </div>
+          <p class="form-status" id="cepStatus"></p>
+
+          <div class="address-grid">
+            <label>Rua<input id="street" type="text" readonly /></label>
+            <label>Número<input id="number" type="text" placeholder="Número" /></label>
+            <label>Bairro<input id="district" type="text" readonly /></label>
+            <label>Cidade<input id="city" type="text" readonly /></label>
+            <label>Estado<input id="state" type="text" readonly /></label>
+            <label>Complemento<input id="complement" type="text" placeholder="Casa, bloco, apartamento..." /></label>
+          </div>
+          <div class="freight-calculator fixed-freight">
+            <div class="freight-origin">📦 Entrega NexCore</div>
+            <div class="freight-result" id="freightResult" aria-live="polite">
+              <strong>Frete fixo para qualquer pedido</strong><span>R$ 30,00</span>
+            </div>
+            <small class="freight-note">O valor do frete é somado automaticamente ao total do carrinho.</small>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section about" id="sobre">
+      <div class="section-heading reveal">
+        <span class="eyebrow">Sobre Nós</span>
+        <h2>Tecnologia criada para cada necessidade</h2>
+      </div>
+
+      <div class="about-story reveal">
+        <p>A NexCore nasceu com o propósito de tornar a tecnologia mais acessível, confiável e personalizada para cada
+          cliente. Somos especializados na venda de computadores, peças e componentes de alta qualidade, além da
+          montagem de PCs sob medida para gamers, profissionais, estudantes e empresas.</p>
+        <p>Acreditamos que cada pessoa possui necessidades diferentes. Por isso, oferecemos atendimento especializado
+          para ajudar na escolha da configuração ideal, garantindo desempenho, qualidade e o melhor custo-benefício.
+          Trabalhamos apenas com marcas reconhecidas no mercado e realizamos montagens com rigor técnico, assegurando
+          confiabilidade e excelência em cada equipamento entregue.</p>
+        <p>Nosso compromisso vai além da venda. Buscamos proporcionar uma experiência de compra simples, segura e
+          transparente, oferecendo frete fixo de R$ 30,00, suporte dedicado e um processo de compra pensado para a
+          comodidade do cliente.</p>
+        <p>Na NexCore, tecnologia não é apenas produto: é uma solução desenvolvida para atender às suas necessidades.
+          Nosso objetivo é construir relações de confiança, entregar equipamentos de alto desempenho e acompanhar a
+          evolução tecnológica para oferecer sempre as melhores soluções do mercado.</p>
+        <strong class="about-signature">NexCore – Tecnologia montada para você.</strong>
+      </div>
+
+      <div class="about-grid about-details">
+        <div class="mission-card reveal">
+          <span>Missão</span>
+          <h3>Entregar tecnologia de qualidade</h3>
+          <p>Oferecer computadores personalizados, peças confiáveis e atendimento especializado que simplifique a vida
+            dos nossos clientes.</p>
+        </div>
+        <div class="mission-card reveal">
+          <span>Compromisso</span>
+          <h3>Confiança em cada montagem</h3>
+          <p>Garantir qualidade, transparência, rigor técnico e suporte dedicado antes, durante e após cada compra.</p>
+        </div>
+      </div>
+
+      <div class="values-grid reveal">
+        <article>◆ <span>Qualidade acima de tudo</span></article>
+        <article>◆ <span>Honestidade e transparência</span></article>
+        <article>◆ <span>Atendimento especializado</span></article>
+        <article>◆ <span>Inovação constante</span></article>
+        <article>◆ <span>Compromisso com o cliente</span></article>
+        <article>◆ <span>Agilidade nas entregas</span></article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="#inicio"><span class="logo-mark">N</span><span>NEX<span>CORE</span></span></a>
+    <p>© 2026 NexCore. Tecnologia montada para você.</p>
+    <div><a href="#produtos">Produtos</a><a href="#montagem">Montagem</a><a href="#entrega">Entrega</a></div>
+  </footer>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-header">
+      <h2>Seu carrinho</h2>
+      <button id="closeCart" aria-label="Fechar carrinho">×</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-summary-row"><span>Subtotal</span><strong id="cartSubtotal">R$ 0,00</strong></div>
+      <div class="cart-summary-row"><span>Frete</span><strong>R$ 30,00</strong></div>
+      <div class="cart-summary-row cart-grand-total"><span>Total</span><strong id="cartTotal">R$ 0,00</strong></div>
+      <button class="btn primary full" id="checkoutButton">Finalizar pelo WhatsApp</button>
+    </div>
+  </aside>
+  <div class="overlay" id="overlay"></div>
+
+  <a class="whatsapp-float" id="whatsappFloat" href="#" target="_blank" rel="noopener"
+    aria-label="Falar com a NexCore pelo WhatsApp">
+    <span>WhatsApp</span>
+    <svg class="whatsapp-icon" viewBox="0 0 32 32" aria-hidden="true">
+      <path fill="currentColor"
+        d="M16.04 3C8.86 3 3.03 8.73 3.03 15.8c0 2.25.6 4.45 1.73 6.38L3 29l7.03-1.8a13.2 13.2 0 0 0 6 1.45h.01c7.17 0 13-5.73 13-12.8C29.04 8.73 23.21 3 16.04 3Zm0 23.48h-.01a11 11 0 0 1-5.6-1.52l-.4-.24-4.17 1.07 1.12-4.04-.27-.41a10.55 10.55 0 0 1-1.66-5.54c0-5.89 4.93-10.68 10.99-10.68 6.05 0 10.98 4.79 10.98 10.68 0 5.9-4.93 10.68-10.98 10.68Zm6.03-8c-.33-.16-1.96-.94-2.26-1.05-.3-.1-.52-.16-.74.16-.22.32-.85 1.05-1.04 1.27-.2.21-.39.24-.72.08-.33-.16-1.4-.5-2.66-1.6a9.9 9.9 0 0 1-1.84-2.22c-.19-.32-.02-.5.14-.66.15-.14.33-.37.5-.56.16-.19.21-.32.32-.53.11-.21.06-.4-.03-.56-.08-.16-.74-1.74-1.01-2.38-.27-.64-.54-.55-.74-.56h-.63c-.22 0-.57.08-.87.4-.3.32-1.14 1.08-1.14 2.64 0 1.55 1.16 3.06 1.32 3.27.17.21 2.28 3.4 5.53 4.77.77.33 1.38.52 1.85.67.78.24 1.48.2 2.04.12.62-.09 1.96-.78 2.23-1.53.28-.75.28-1.39.2-1.53-.08-.13-.3-.21-.63-.37Z" />
+    </svg>
+  </a>
+
+  <button class="chat-toggle" id="chatToggle" aria-label="Abrir suporte virtual">💬</button>
+  <section class="chatbot" id="chatbot" aria-hidden="true">
+    <header>
+      <div><span class="bot-dot"></span>
+        <div><strong>NexBot</strong><small>Suporte online</small></div>
+      </div>
+      <button id="chatClose" aria-label="Fechar chatbot">×</button>
+    </header>
+  <div class="api-bar">
+
+    <input
+        id="openaiApiKey"
+        type="password"
+        placeholder="🔑 API Key">
+
+    <button
+        id="connectApiBtn"
+        type="button">
+        OK
+    </button>
+
+</div>
+
+<small id="apiStatus" class="api-status"></small>
+<div class="chat-messages" id="chatMessages">
+
+    <div class="message bot">
+        Olá! 👋
+    </div>
+
+</div>
+    <div class="quick-options">
+      <button data-message="Quero montar um PC">Montar PC</button>
+      <button data-message="Como funciona a entrega?">Entrega</button>
+      <button data-message="Quero falar com um atendente">Atendente</button>
+    </div>
+    <form id="chatForm">
+      <input id="chatInput" type="text" placeholder="Digite sua mensagem..." autocomplete="off" />
+      <button type="submit">➤</button>
+    </form>
+  </section>
+
+
+  <section class="register-modal" id="registerModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="registerTitle">
+    <div class="register-backdrop" data-close-register></div>
+    <div class="register-card">
+      <button class="register-close" id="closeRegister" type="button" aria-label="Fechar cadastro">×</button>
+      <div class="register-brand"><span class="logo-mark">N</span><span>NEX<span>CORE</span></span></div>
+      <span class="register-kicker">ÁREA DO CLIENTE</span>
+      <h2 id="registerTitle">Crie sua conta</h2>
+      <p>Salve seus dados, acompanhe pedidos e tenha uma experiência de compra mais rápida.</p>
+
+      <form id="registerForm" novalidate>
+        <div class="register-grid">
+          <label>Nome completo
+            <input id="registerName" name="name" type="text" autocomplete="name" placeholder="Seu nome completo" required minlength="3">
+            <small class="field-error"></small>
+          </label>
+          <label>Telefone
+            <input id="registerPhone" name="phone" type="tel" autocomplete="tel" inputmode="numeric" placeholder="(11) 99999-9999" required>
+            <small class="field-error"></small>
+          </label>
+          <label class="full-field">E-mail
+            <input id="registerEmail" name="email" type="email" autocomplete="email" placeholder="voce@email.com" required>
+            <small class="field-error"></small>
+          </label>
+          <label>Senha
+            <div class="password-field">
+              <input id="registerPassword" name="password" type="password" autocomplete="new-password" placeholder="Mínimo de 8 caracteres" required minlength="8">
+              <button class="toggle-password" type="button" data-target="registerPassword" aria-label="Mostrar senha">◉</button>
+            </div>
+            <small class="field-error"></small>
+          </label>
+          <label>Confirmar senha
+            <div class="password-field">
+              <input id="registerConfirm" name="confirm" type="password" autocomplete="new-password" placeholder="Repita sua senha" required>
+              <button class="toggle-password" type="button" data-target="registerConfirm" aria-label="Mostrar senha">◉</button>
+            </div>
+            <small class="field-error"></small>
+          </label>
+        </div>
+        <label class="register-terms">
+          <input id="registerTerms" type="checkbox" required>
+          <span>Li e aceito os termos de uso e a política de privacidade.</span>
+        </label>
+        <small class="terms-error field-error"></small>
+        <button class="btn primary full register-submit" type="submit">Criar minha conta</button>
+        <p class="register-login">Já possui cadastro? <button type="button" id="loginLink">Entrar</button></p>
+      </form>
+      <div class="register-success" id="registerSuccess" hidden>
+        <div class="success-icon">✓</div>
+        <h3>Cadastro realizado!</h3>
+        <p>Sua conta NexCore foi criada com sucesso neste dispositivo.</p>
+        <button class="btn primary full" id="finishRegister" type="button">Continuar comprando</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="toast" id="toast"></div>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
